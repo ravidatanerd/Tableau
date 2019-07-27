@@ -1,0 +1,23 @@
+Script_INT(" 
+## Sets the seed
+set.seed(.arg8[1])
+
+## Studentizes the variables
+
+age<-(.arg1-mean(.arg1))/sd(.arg1)
+pclass<-(.arg2-mean(.arg2))/sd(.arg2)
+embarkedn<-(.arg3-mean(.arg3))/sd(.arg3)
+sex<-(.arg4-mean(.arg4))/sd(.arg4)
+survived<-(.arg5-mean(.arg5))/sd(.arg5)
+sibsp<-(.arg6-mean(.arg6))/sd(.arg6)
+
+dat<-cbind(age,pclass,embarkedn,sex,survived,sibsp)
+
+num<-.arg7[1]
+
+## Creates the clusters
+
+kmeans(dat,num)$cluster
+
+",
+SUM([Age]),SUM([Pclass]),SUM([Embarked N]),SUM([Sex N]),SUM([Survived Num]),SUM([Sib Sp]),[# of Clusters],[Seed])
